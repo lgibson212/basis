@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Basis Tutorial</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
+   <!-- <link href="https://fonts.googleapis.com/css?family=Yantramanav:100" rel="stylesheet"> -->
+   <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">  
+	
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	
+	<script>
+		/*transition blocks*/
+		function blockSwap(first, second){
+			var tabName1 = first;
+			var tabName2 = second;
+			tabName1 = tabName1.slice(4);
+			tabName2 = tabName2.slice(4);
+			
+			$("#" + tabName1).removeClass('selected');
+			$("#" + tabName2).addClass('selected');
+			
+			$('#' + first).fadeOut('fast');
+			setTimeout(function(){
+			 	$('#' + second).fadeIn('fast');
+			}, 500);
+		}
+		
+		function countDown(){
+			/*display countdown, "5,4,3,2,1" - then show next section*/
+			var num = 5;
+			var numString;
+			var counting = setInterval(function(){
+				$("#countDown").fadeIn('slow');
+				numString = num.toString();
+				document.getElementById("countDown").innerHTML = numString;
+				num = num - 1;
+				$("#countDown").fadeOut('slow');
+				if (num <= 0){
+					clearInterval(counting);
+					$("#subBlock1").fadeOut();
+					setTimeout(function(){$("#subBlock2").fadeIn();},500);
+				}
+			}, 2000);
+			
+		}
+	</script>
+</head>
+<div id="header">
+	<div id="headerTitle" onclick="window.location.href='index.html'">Basis: Beginning</div>
+
+	<div id="navBar">
+		<div id="1" class="navItem selected">Part I</div>
+		<div id="2" class="navItem">Part II</div>
+		<div id="3" class="navItem">Part III</div>
+		<div id="4" class="navItem">Part IV</div>
+		<div id="5" class="navItem">Part V</div>
+	</div>
+
+</div>
+<body>
+	<!--
+	<div class="prevNext" id="prev">  <  </div>
+	<div class="prevNext" id="next">  >  </div>
+	-->
+	<div id="Part1" class="block" >
+		<h1>- Unconscious Bias -</h1>
+		<p>When you mention unconscious bias, people tend to get defensive, or dismissive. So let's begin by taking a step back, and looking at the larger picture...</p>
+		<div id="footsteps" onclick="blockSwap('Part1','Part2');"><img width="200" height="200" style="cursor:pointer; margin-top:100px;" src="img/steps.png"/></div>
+		<div onclick="blockSwap('Part1','Part2');" class="buttonStyle" style="float:left; width:100px; text-align:center; margin-left:308px;">Next</div>
+	</div>
+	
+	<div id="Part2" class="block">
+		<div id="brain" onclick="blockSwap('Part2','Part3'); countDown();"><img width="231" height="176" style="margin-top:130px; cursor:pointer;" src="img/brain.png"/></div>
+		<p>
+			As humans, our brains are wired for pattern-recognition and narrative building.
+			We are community-based creatures shaped heavily by social influences.
+			</br></br>
+			Throughout our lives, we absorb signals from our culture about what's good and bad, 
+			often without realizing that we are learning or internalizing these values.	
+		</p>
+		
+		<div id="sky" style="margin-top:-500px;">
+			<div id="star"></div> 
+			<div id="star" style="width:2px; height:2px; margin-top:100px;"></div>
+			<div id="star" style="margin-top:10px; width:6px; height:6px;"></div> 
+			<div id="star" style="margin-left:180px; width:3px; height:3px;"></div>
+			<div id="star"></div> 
+			<div id="star"></div>
+			<div id="star" style="margin-left:350px; width:2px; height:2px;"></div> 
+			<div id="star" style="margin-left:-30px;"></div>
+			<div id="star" style="margin-top:40px; width:4px; height:4px;"></div> 
+			<div id="star"></div>
+			<div id="star" style="margin-left:300px; margin-top:20px; width:3px; height:3px;"></div> 
+			<div id="star" style="margin-left:0px; margin-top:70px; width:6px; height:6px;"></div>  
+		</div>
+		
+		<div onclick="blockSwap('Part2','Part3'); countDown();" class="buttonStyle" style="float:left; width:100px; text-align:center; margin-top:190px; margin-left:312px;">Next</div>
+	</div>
+	
+	<div id="Part3" class="block">
+		<div id="subBlock1">
+			<h1>Picture a Developer...</h1>
+			<p>What do you see? </p>
+			<div id="countDown" style="font-size:35px;"></div>
+		</div>
+		<div id="subBlock2" style="display:none">
+			<div id="people" ><img width="342" height="298" style="margin-top:-30px;" src="img/people.png"/></div>
+			<div id="caption1" style="float:left; margin-left:220px; ">Is it this guy?</div>
+			<div id="caption2" style="float:left; margin-left:25px;">What about her?</br>Is she a developer?</div>
+			<p style="float:left; width:100%; text-align:center;">Which one do you think is smarter?</p>
+			<p style="float:left; width:100%; text-align:center;">
+				It's easy to answer correctly when you stop to think about it, but in everyday life it's harder to recognize
+				how our unconscious biases subtly influence our </br>"gut feeling" about a person, and how we are likely to reinforce
+				that gut feeling through <a style="color:white;" target="blank" href="https://en.wikipedia.org/wiki/Confirmation_bias">confirmation bias.</a>
+			</p>
+			<div onclick="blockSwap('Part3','Part4');" class="buttonStyle" style="float:left; width:100px; text-align:center; margin-left:340px;">Next</div>
+		</div>
+	</div>
+	
+	<div id="Part4" class="block">
+		<div id="subBlock3">
+			<h1>Who, Me?</h1>
+			<img width="320" height="316" style="cursor:pointer; margin-top:10px;" src="img/whoMe.png"/>
+			<p style="margin-right:190px;">But I'm not</p>
+			
+			<div id="selectOne" style="margin-top:-58px; margin-left:120px;">
+				<form method="post">
+					<select name="Isms and Phobias">
+						<option value="sexist">sexist</option>
+						<option value="racist">racist</option>
+						<option value="homophobic">homophobic</option>
+						<option value="ableist">ableist</option>
+					</select>
+				</form>
+				<div class="buttonStyle" id="submit" onclick="$('#subBlock3').hide(); $('#subBlock4').show();">SUBMIT</div>
+			</div>
+		</div>
+		
+		<div id="subBlock4" style="display:none;">
+			<p>
+				The idea behind unconscious bias is that it affects us in ways we're not aware of.</br></br>
+				
+				Naturally, we are influenced by our own experiences. Less so by other people's. 
+				This can make us less thoughtful about the opinions we accept about others. </br></br>
+				
+				No one is immune to this. </br>
+				People who have experienced bias can still be biased towards others. 
+			</p>
+			
+			<div onclick="blockSwap('Part4','Part5');" id="submit" class="buttonStyle" style="width:500px; margin-top:40px; margin-left:auto; margin-right:auto;">Okay, that makes sense. So what can I do?</div>
+		</div>
+	</div>
+	
+	<div id="Part5" class="block">
+			<div id="people" ><img width="268" height="173" style="margin-top:20px;" src="img/eye.png"/></div>
+			<h1>What You Can Do</h1>
+			<ul>
+				<li>Be aware of your own biases. Evaluate your own assessments.</li>
+				<li>Break the in-group/out-group mentality. </br>
+				Expand notions of the "right fit" for the "company culture."</li>
+				
+				<li>Actively seek diversity to counteract bias against it.</li>
+				<li>Actively work to retain and support recruits from diverse backgrounds.</li>
+				<li>SPEAK OUT - in private settings when you hear others</br>reinforcing harmful assumptions.</li>
+				<li>LISTEN - to the experiences of others.</li>
+			</ul>
+			
+			<div id="submit" onclick="window.location.href='index.html'" class="buttonStyle" style="margin-top:40px; margin-left:250px; margin-right:auto;">Replay</div>
+			<div id="submit" onclick="window.location.href='#'" class="buttonStyle" style="margin-top:-25px; margin-left:415px; margin-right:auto;">Home</div>
+	</div>
+
+</body>
+
+</html>
